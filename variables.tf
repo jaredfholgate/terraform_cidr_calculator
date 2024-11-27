@@ -1,13 +1,11 @@
-variable "address_space_start_ip" {
+variable "address_space" {
   type        = string
-  description = "The address space that is used the virtual network"
-  default     = "10.0.0.0"
-}
-
-variable "address_space_size" {
-  type        = number
-  description = "The address space that is used the virtual network"
-  default     = 22
+  description = "The address space that is used the virtual network in CIDR notation"
+  default     = "10.0.0.0/22"
+  validation {
+    condition     = can(regex("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}/[0-9]{1,2}$", var.address_space))
+    error_message = "The address space must be in CIDR notation"
+  }
 }
 
 variable "subnets_and_sizes" {
