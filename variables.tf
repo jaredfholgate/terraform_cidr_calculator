@@ -14,9 +14,9 @@ variable "subnets_and_sizes" {
   type        = map(number)
   description = "The size of the subnets"
   default = {
-    "a" = 26
+    "a" = 28
     "b" = 26
-    "c" = 27
-    "d" = 28
+    "c" = 26
+    "d" = 27
   }
 }
